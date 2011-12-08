@@ -1,5 +1,8 @@
 class ApplicationSession < Authlogic::Session::Base
   authenticate_with ApplicationAccount
 
-  api_key_param 'app_key'
+  params_key :app_key
+  login_field false
+
+  single_access_allowed_request_types :any
 end
