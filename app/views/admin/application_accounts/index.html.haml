@@ -1,0 +1,25 @@
+.title
+  = t(:application_account_settings, :default => "Application Account Settings")
+
+.list
+  .remote
+    .section
+      - @application_accounts.each do |account|
+        = form_tag admin_application_account_path(account), :method => :put do
+          .label.top.req Application name:
+          = text_field_tag 'application_account[name]', account.name, :style => "width:100px"
+          .label.top.req Token:
+          = text_field_tag 'application_account[single_access_token]', account.single_access_token, :style => "width:150px"
+          = submit_tag 'Update', :name => :update, :style => "width:60px"
+        = button_to 'Delete', admin_application_account_path(account.id), :method => "delete", :style => "width:60px"
+        .spacer
+
+    .section
+      %div
+        = t('.create_new_application_key', :default => "Create a new application key")
+        = form_tag admin_application_accounts_path, :method => :post do
+          .label.top.req Application name:
+          = text_field_tag 'application_account[name]', '', :style => "width:100px"
+          .label.top.req Token:
+          = text_field_tag 'application_account[single_access_token]', '', :style => "width:150px"
+          = submit_tag t('.create', :default => 'Create'), :name => :create

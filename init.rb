@@ -5,4 +5,5 @@ FatFreeCRM::Plugin.register(:crm_authlogic_api, self) do
         author "Ben Tillman"
        version "0.1"
    description "Integrates authlogic_api"
+           tab :admin, :text => "App API", :url => { :controller => "admin/application_accounts" }
 end
