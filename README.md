@@ -2,14 +2,18 @@
 ===================
 
 This plugin enables applications to authenticate with Fat Free CRM using 
-the Authlogic `single_access_token` method.
+the Authlogic `single_access_token` method. Credit to http://blog.smsohan.com/2010/04/using-authlogic-and-single-access-token.html for reference information whilst building this.
 
 ## Installation
 
 * Install this plugin into your Fat Free CRM vendor/plugins folder and run
 `rake db:migrate:plugins`. This will create the application_accounts table.
-* In your controller, add a before_filter for the action you wish to protect:
-`before_filter :require_application, :only => :meta_search`
+* For your controller action, you need to remove the `require_user` authentication layer and add a `require_application` before_filter.
+
+````ruby
+skip_before_filter :require_user, :only => :my_action
+before_filter :require_application, :only => :my_action
+````
 * Pop the following method in your application_controller
 
 ````ruby
