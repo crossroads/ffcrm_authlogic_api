@@ -4,7 +4,7 @@ module FatFreeCRM
       config.to_prepare do
         begin
           FatFreeCRM::Tabs.admin << {
-            :text => "Application Tokens",
+            :text => "API Tokens",
             :url => { :controller => "admin/application_accounts" }
           }
         rescue TypeError
