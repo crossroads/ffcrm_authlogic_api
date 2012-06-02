@@ -2,6 +2,7 @@ module FatFreeCRM
   module AuthlogicAPI
     class Engine < Rails::Engine
       config.to_prepare do
+        require 'ffcrm_authlogic_api/application_authentication_helper'
         begin
           FatFreeCRM::Tabs.admin << {
             :text => "API Tokens",
