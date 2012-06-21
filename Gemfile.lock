@@ -60,6 +60,8 @@ GEM
     chosen-rails (0.9.8)
       railties (~> 3.0)
       thor (~> 0.14)
+    ci_reporter (1.6.5)
+      builder (>= 2.1.2)
     cocaine (0.2.1)
     combustion (0.3.2)
       rails (>= 3.0.0)
@@ -190,6 +192,7 @@ PLATFORMS
 
 DEPENDENCIES
   capybara
+  ci_reporter (= 1.6.5)
   combustion
   fat_free_crm
   ffcrm_authlogic_api!
