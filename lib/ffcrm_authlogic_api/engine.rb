@@ -6,7 +6,8 @@ module FatFreeCRM
         begin
           FatFreeCRM::Tabs.admin << {
             :text => "API Tokens",
-            :url => { :controller => "admin/application_accounts" }
+            :url => { :controller => "admin/application_accounts" },
+            :icon => 'fa-exchange'
           }
         rescue TypeError
           puts "You must migrate your settings table."
