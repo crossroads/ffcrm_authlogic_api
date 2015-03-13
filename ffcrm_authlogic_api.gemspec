@@ -10,9 +10,6 @@ Gem::Specification.new do |s|
   s.files = `git ls-files`.split("\n")
   s.version = FatFreeCRM::AuthlogicAPI::VERSION
 
-  s.add_development_dependency 'rspec-rails', '~> 2.6'
-  s.add_development_dependency 'capybara'
-  s.add_development_dependency 'combustion'
   s.add_dependency 'fat_free_crm'
   s.add_dependency 'authlogic'
 end
