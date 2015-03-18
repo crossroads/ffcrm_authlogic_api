@@ -4,31 +4,17 @@ begin
 rescue LoadError
   puts 'You must `gem install bundler` and `bundle install` to run rake tasks'
 end
-Bundler.require :default, :development
 
-task :environment do
-  Combustion.initialize!
-end
-Combustion::Application.load_tasks
-
-class Combustion::Application
-  # Add migrations from all engines
-  Railties.engines.each do |engine|
-    config.paths['db/migrate'] += engine.paths['db/migrate'].existent
-  end
-end
-
-require "rspec/core/rake_task"
-RSpec::Core::RakeTask.new(:spec) do |spec|
-  spec.pattern = Dir.glob(['spec/sitemap_generator/**/*'])
-  spec.rspec_opts = ['--backtrace']
-end
-
-desc 'Default: run spec tests.'
-task :default => :spec
-
-# Let Combustion handle database preparation
-Rake::Task["spec"].prerequisites.clear
+#APP_RAKEFILE = File.expand_path("../spec/dummy/Rakefile", __FILE__)
+#load 'rails/tasks/engine.rake'
 
 Bundler::GemHelper.install_tasks
 
+Dir[File.join(File.dirname(__FILE__), 'tasks/**/*.rake')].each {|f| load f }
+
+#require 'rspec/core'
+#require 'rspec/core/rake_task'
+
+#desc "Run all specs in spec directory (excluding plugin specs)"
+#RSpec::Core::RakeTask.new(:spec => 'app:db:test:prepare')
+#task :default => :spec
