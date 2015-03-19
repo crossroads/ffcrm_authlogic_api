@@ -15,8 +15,10 @@ module FatFreeCRM
       end
 
       initializer :append_migrations do |app|
-        config.paths["db/migrate"].expanded.each do |expanded_path|
-          app.config.paths["db/migrate"] << expanded_path
+        unless "#{root}/spec/dummy" == app.root.to_s
+          config.paths["db/migrate"].expanded.each do |expanded_path|
+            app.config.paths["db/migrate"] << expanded_path
+          end
         end
       end
 
