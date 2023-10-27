@@ -1,5 +1,6 @@
 # CRM Authlogic API
-===================
+
+# This project is no longer actively maintained.
 
 This plugin enables applications to authenticate with Fat Free CRM using 
 the Authlogic `single_access_token` method. Credit to http://blog.smsohan.com/2010/04/using-authlogic-and-single-access-token.html for reference information whilst building this.
